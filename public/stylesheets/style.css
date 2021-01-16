@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+}
+
+header{ 
+    display: block;
+    text-align: center;
+    padding:0.5%;
+    background-color: rgb(6, 232, 248);
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h4, h2, h3{
+    font-size: 16pt;
+    font-weight: bolder;
+    color: black;
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#hd2{
+    font-size: 13pt;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+ul.navbar, button{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.navbar li, #displaybutton{
+    float: left;
+}
+
+ul.navbar li a{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+button {
+    padding: 0.85rem;
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 12pt;
+}
+
+button:hover {
+    background-color: #4CAF50;
+}
+
+ul.navbar li a:hover {
+    background-color: #4CAF50;
+}
+
+ul.navbar li.right {
+    float: right;
+}
+
+@media screen and (max-width: 600px) {
+  ul.navbar li.right, button,
+  ul.navbar li, #displaybutton {
+      float: none; 
+    }
+}
+
+
+.add, .update, .delete, .homepage, .search, .tb1, .helppage, .addsuccess, .addfailure, .displayppl{
+    font-size: 13pt;
+    border-radius: 3rem;
+    background-color: #96eb0c;
+    padding: 2rem;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+input[type=text], [type=number],[type=date],[type=submit]{
+    width: 100%;
+    padding: 0.25rem;
+    border-radius: 1%;
+}
+
+input[type=text], [type=number],[type=date],[type=submit]:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px #61C5FA;
+    border:1px solid #5AB0DB;
+}
+
+input[type=submit] {
+    background-color:rgba(70, 69, 69, 0.562);
+    color: black;
+    font-size: 13pt;
+    padding: 0.25rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: green;
+}
+
+label {
+    padding: 0.5rem 0rem 0.5rem 0rem;
+    display: inline-block;
+    font-weight: bold;
+}
+
+
+table{
+    background-color: #96eb0c;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: auto;
+    border: 0.5 solid black;
+    left: 0%;
+    top: 10%;
+}
+
+tr.tb1 {
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+td, th{
+    border: 2px solid black;
+    padding:0.5rem;
+    width: 5%;
+    /* font-weight: bold; */
+    text-align: center;
+    font-size: 13pt;
+}
+
+#imag {
+    display: block;
+    width:10rem;
+    height: auto;
+    float: right;
+    top: 0;
+}
+
+u{
+    color: blue;
+}
+
+#red {
+    color: red;
+}
