@@ -31,7 +31,7 @@ app.post('/addclub', (req,res)=>{
   var intyearf = 1*yearf;
 
   if (team && manager && sname && yearf && homestd && league && country){
-    var getUsersQuery = "INSERT INTO ppl VALUES ('" + team + "','" + manager + "'," + sname + ","+ intyearf +"," + homestd +",'"+ league +"')";
+    var getUsersQuery = "INSERT INTO clubs VALUES ('" + team + "','" + manager + "'," + sname + ","+ intyearf +"," + homestd +",'"+ league +"')";
     pool.query(getUsersQuery, (error, result) => {
       if (error) {
         res.render('pages/clubnotadded.ejs')
@@ -50,6 +50,96 @@ app.post('/addclub', (req,res)=>{
 
 
 // GET request for /display clubs
+app.get('/displayclubs', async (req,res) => {
+  try {
+    console.log("get request for /displayclubs");
+    const client = await pool.connect()
+    const result = await client.query('SELECT * FROM clubs');
+    const results = { 'rows': (result) ? result.rows : null};
+    res.render('pages/db', results );
+    client.release();
+  } catch (err) {
+    console.error(err);
+    res.render('pages/notadded.ejs')
+  }
+});
+
+
+// POST request for /deleteclub
+app.post('/deleteclub', (req, res) => {
+  console.log("post request for /deleteclub");
+  var team = req.body.team;
+
+  if(team)  {
+    var getUsersQuery = `DELETE FROM clubs WHERE team = '${ team }'`;
+    pool.query(getUsersQuery, (error, result) => {
+      if (error) {
+        res.render('pages/clubnotadded.ejs')
+      }
+      const results = { 'rows': (result) ? result.rows : null};
+      res.render('pages/clubadded.ejs', results);
+    });
+  }
+  else {
+    res.render('pages/clubnotadded.ejs')
+  }
+});
+
+
+// POST request for /updateclub
+app.post('/updateclub',(req,res)=>{
+  console.log("post request for /updateclub");
+  var team = req.body.team;
+  var manager = req.body.manager;
+  var sname = req.body.sname;
+  var yearf = req.body.yearf;
+  var homestd = req.body.homestd;
+  var league = req.body.league;
+  var country = req.body.country;
+  var intyearf = 1*yearf;
+
+  
+  if(team && manager && sname && yearf && homestd && league && country)  {
+    var getUsersQuery = `UPDATE clubs SET manager= ${manager}, sname=${sname}, yearf=${intyearf}, homestd='${homestd}', league='${league}', country='${country}' WHERE team = '${team}'`;
+    pool.query(getUsersQuery, (error, result) => {
+      if (error) {
+        res.render('pages/clubnotadded.ejs')
+      }
+      const results = { 'rows': (result) ? result.rows : null};
+      res.render('pages/clubadded.ejs', results);
+    });
+  }
+  else {
+    res.render('pages/clubnotadded.ejs')
+  }
+});
+
+
+// GET request
+
+
+// POST request for /searchclub
+app.post('/searchclub', (req, res) => {
+  console.log("post request for /searchclub");
+  var team = req.body.team;
+
+  if(team)  {
+    var getUsersQuery = `SELECT * FROM clubs WHERE team = '${team}'`;
+    pool.query(getUsersQuery, (error, result) => {
+      if (error) {
+        res.render('pages/clubnotadded.ejs')
+      }
+      const results = { 'rows': (result) ? result.rows : null};
+      res.render('pages/displayclubs.ejs', results);
+    });
+  }
+  else {
+    res.render('pages/clubnotadded.ejs')
+  }
+});
+
+
+
 
 
 
