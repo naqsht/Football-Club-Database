@@ -22,7 +22,7 @@
           <li><a href="/update.html">Update</a></li>
           <li><a href="/delete.html">Delete</a></li>
           <li>
-            <form id="display" action="/displayclubs" method="get">
+            <form action="/displayclubs" method="get">
               <button>Display</button>
             </form>
           </li>
@@ -31,7 +31,34 @@
       </nav>
 
       <div class="table">
-        
+
+        <h4> Football Clubs</h4>
+
+        <table>
+          <tr class="columns">
+          <th>Team</th>
+          <th>Manager</th>
+          <th>Short Name</th>
+          <th>Year Founded</th>
+          <th>Home Stadium</th>
+          <th>League</th>
+          <th>Country</th>
+          </tr>
+
+          <% rows.forEach(function(r) { %>
+            <tr>
+              <td> <a href="/<%=r.team%> "><%= r.team %></a> </td>
+              <td> <%= r.manager %> %></td>
+              <td> <%= r.sname %></td>
+              <td> <%= r.yearf %></td>
+              <td> <%= r.homestd %></td>
+              <td> <%= r.league %></td>
+              <td> <%= r.country %></td>
+            </tr>
+  
+          <% }); %>
+        </table>
+
       </div>
 
 
