@@ -115,7 +115,23 @@ app.post('/updateclub',(req,res)=>{
 });
 
 
-// GET request
+// GET request id
+app.get('/:id', (req,res) => {
+  console.log(req.params.id);
+  var getUsersQuery = `SELECT * FROM clubs WHERE team = '${req.params.id}'`;
+
+  console.log(getUsersQuery);
+
+  pool.query(getUsersQuery, (error, result) => {
+    if (error) {
+      res.render('pages/clubnotadded.ejs')
+    }
+    var results = {'rows': result.rows };
+    console.log(result);
+    res.render('pages/displayclubs', results)
+  });
+});
+
 
 
 // POST request for /searchclub
