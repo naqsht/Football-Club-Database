@@ -67,13 +67,13 @@ ul.navbar li.right {
 
 @media screen and (max-width: 600px) {
   ul.navbar li.right, button,
-  ul.navbar li, #displaybutton {
+  ul.navbar li, #display {
       float: none; 
     }
 }
 
 
-.add, .update, .delete, .homepage, .search, .tb1, .helppage, .addsuccess, .addfailure, .displayppl{
+.add, .update, .delete, .homepage, .search, .table, .helppage, .added, .notadded, .clubsdisplay{
     font-size: 13pt;
     border-radius: 3rem;
     background-color: #96eb0c;
@@ -125,7 +125,7 @@ table{
     top: 10%;
 }
 
-tr.tb1 {
+tr.table {
     font-weight: bold;
     font-size: 14pt;
 }
