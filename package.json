@@ -16,8 +16,8 @@
     "pg": "^8.5.1"
   },
   "devDependencies": {
-    "got": "^11.3.0",
-    "tape": "^4.7.0"
+    "got": "^11.8.1",
+    "tape": "^4.13.3"
   },
   "repository": {
     "type": "git",
