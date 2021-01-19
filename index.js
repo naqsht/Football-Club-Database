@@ -12,10 +12,10 @@ var app = express()
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-app.use(express.static(path.join(__dirname, 'public')))
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'ejs')
-app.get('/', (req, res) => res.render('public/index.html'))
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.get('/', (req, res) => res.render('public/index.html'));
 
 // POST request for /addclub
 app.post('/addclub', (req,res)=>{
@@ -56,11 +56,11 @@ app.get('/displayclubs', async (req,res) => {
     const client = await pool.connect()
     const result = await client.query('SELECT * FROM clubs');
     const results = { 'rows': (result) ? result.rows : null};
-    res.render('pages/db', results );
+    res.render('pages/db.ejs', results );
     client.release();
   } catch (err) {
     console.error(err);
-    res.render('pages/notadded.ejs')
+    res.render('pages/clubnotadded.ejs')
   }
 });
 
@@ -128,7 +128,7 @@ app.get('/:id', (req,res) => {
     }
     var results = {'rows': result.rows };
     console.log(result);
-    res.render('pages/displayclubs', results)
+    res.render('pages/displayclubs.ejs', results)
   });
 });
 
@@ -153,11 +153,6 @@ app.post('/searchclub', (req, res) => {
     res.render('pages/clubnotadded.ejs')
   }
 });
-
-
-
-
-
 
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
